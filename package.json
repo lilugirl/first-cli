@@ -1,6 +1,6 @@
 {
   "name": "lilugirl-first-cli",
-  "version": "1.0.7",
+  "version": "1.0.13",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -9,11 +9,16 @@
   "config": {
     "port": "8080"
   },
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "start": "npm publish .",
     "test": "node bin/cli -t js -n q",
     "help": "node bin/cli --help",
-    "serve": "node bin/cli -serve"
+    "serve": "node bin/cli -serve",
+    "install": "node index.js",
+    "postinstalltest":"node bin/webstorm-disable-index.js"
   },
   "repository": {
     "type": "git",
@@ -29,15 +34,17 @@
   "dependencies": {
     "find-up": "^6.3.0",
     "pkg-dir": "^7.0.0",
+    "pre-commit": "^1.2.2",
+    "webstorm-disable-index": "^1.2.0",
     "yargs": "^17.7.1"
   },
   "devDependencies": {
     "husky": "^8.0.3"
   },
-  "husky":{
-    "hooks":{
-      "pre-commit":"npm test",
-      "pre-push":"npm test"
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test"
     }
   }
 }
