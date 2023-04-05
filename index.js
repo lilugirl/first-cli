@@ -1,3 +1,5 @@
-module.exports = function (name) {
-  console.log("hello" + name);
-};
+'use strict'
+const path=require('path');
+
+
+

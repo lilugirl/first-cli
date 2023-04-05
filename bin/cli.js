@@ -1,18 +1,15 @@
 #! /usr/bin/env node 
 
-var argv = process.argv;
-argv.shift();
-console.log('process.argv',process.argv);
-console.log('argv',argv);
 
-var file_path = __dirname;
-var current_path=process.cwd();
-console.log('__dirname',__dirname);
-console.log('process.cwd()',process.cwd());
-
-for(var i in argv){
-    var _argv=argv[i];
-    if(_argv=='-h' || _argv == '--help'){
-        console.log('this is help info')
-    }
-}
+require('yargs').command('serve [port]','start the server',(yargs)=>{
+    yargs.positional('port',{
+        describe:'port to bind on',
+        default: 5000
+    })
+},(argv)=>{
+    if(argv.verbose) console.info(`start server on: ${argv.port}`)
+   serve(argv.port)
+}).option('verbose',{
+    alias:'v',
+    default:false
+}).argv
